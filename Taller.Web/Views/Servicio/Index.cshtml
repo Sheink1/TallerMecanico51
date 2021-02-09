@@ -1,0 +1,59 @@
+@model List<Taller.Core.Models.Entidades.Servicio>
+
+<h1>Lista de Servicio</h1>
+
+  
+<div class="my-4">
+   <a asp-controller="Servicio" asp-action="Create" class="btn btn-primary"><i class="icon-plus"></i> Nuevo</a>
+
+</div>
+
+
+<table class="table">
+   <thead>
+     <tr>
+         
+         <th>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Descripcion)</th>
+         <th>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Grupo)</th>
+         <th>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Costo)</th>
+         <th>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Activo)</th> 
+         <th>
+
+         </th>
+     </tr>
+   </thead>
+
+  <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+           
+           <td>@Html.DisplayFor(Items => item.Descripcion)</td>
+           <td>@Html.DisplayFor(Items => item.Grupo)</td>
+           <td>@Html.DisplayFor(Items => item.Costo)</td>
+           <td>@Html.DisplayFor(Items => item.Activo)</td>
+           <td>
+             <a asp-controller="Servicio" asp-action="Info" asp-route-id="@item.IdServicio" class="btn btn-info">
+               <i class="icon-info-sign"></i><span class="d-none d-md-inline">Informacion</span> </a>
+             <a asp-controller="Servicio" asp-action="Edit" asp-route-id="@item.IdServicio" class="btn btn-warning">
+               <i class="icon-edit"></i><span class="d-none d-md-inline">Modificar</span></a>
+             <a asp-controller="Servicio" asp-action="Delete" asp-route-id="@item.IdServicio" class="btn btn-danger" onclick="return DeleteConfirm()">
+               <i class="icon-trash"></i><span class="d-none d-md-inline">Borrar</span> </a>
+           </td>
+        </tr>
+       }
+  </tbody>
+
+</table>
+
+<script type="text/javascript">
+function DeleteConfirm(){
+  if (confirm("Quieres borrar este registro?"))
+  {
+    return true;
+  }
+  else{
+    return false
+  }
+}
+</script>

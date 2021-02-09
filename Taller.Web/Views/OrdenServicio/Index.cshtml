@@ -1,0 +1,52 @@
+@model List<Taller.Core.Models.Entidades.OrdenServicio>
+
+<h1>Lista de Orden Servicio</h1>
+
+
+<div class="my-4">
+   <a asp-controller="OrdenServicio" asp-action="Create" class="btn btn-primary"><i class="icon-plus"></i> Nuevo</a>
+
+</div>
+
+
+<table class="table">
+   <thead>
+     <tr>
+
+         <td>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Fecha)</td>
+         <td>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Mecanico.Nombre)</td>
+         <td>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Cliente.Nombre)</td>
+         <td>@Html.DisplayNameFor(itms => Model.FirstOrDefault().Estatus)</td> 
+         <td>
+              
+         </td>
+     </tr>
+   </thead>
+
+  <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+
+           <td>@Html.DisplayFor(Items => item.Fecha)</td>
+           <td>@Html.DisplayFor(Items => item.IdMecanico)</td>
+           <td>@Html.DisplayFor(Items => item.IdCliente)</td>
+           <td>@Html.DisplayFor(Items => item.Estatus)</td>
+           <td> </td>
+        </tr>
+       }
+  </tbody>
+
+</table>
+
+<script type="text/javascript">
+function DeleteConfirm(){
+  if (confirm("Quieres borrar este registro?"))
+  {
+    return true;
+  }
+  else{
+    return false
+  }
+}
+</script> 

@@ -1,0 +1,36 @@
+@model Taller.Core.Models.Entidades.Modelo
+
+<h3>Informacion de la Modelo @Model.Descripcion</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Modelo" asp-action="Create">
+              <div class="from-group">
+                     <label asp-for="IdModelo" class="control-label"></label>
+                     <input type="text" asp-for="IdModelo" class="form-control" disabled>
+                     <span asp-validation-for="IdModelo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Descripcion" class="control-label"></label>
+                     <input type="text" asp-for="Descripcion" class="form-control" disabled>
+                     <span asp-validation-for="Descripcion" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="IdMarca" class="control-label"></label>
+                     <select asp-for="IdMarca" class="form-control" asp-items="ViewBag.ListaMarcas"disabled>
+                          <option>Seleccione una opcion ...</option>
+                     </select>
+                     <span asp-validation-for="IdMarca" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control" disabled>
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Modelo" asp-action="Index" class="btn btn-secondary">Regregas</a>
+              <a asp-controller="Modelo" asp-action="Edit" asp-route-id="@Model.IdMarca" class="btn btn-warning">Modificar</a>
+              <a asp-controller="Modelo" asp-action="Index" asp-route-id="@Model.IdMarca" class="btn btn-danger">Borrar</a>
+             
+             
+          </form>
+      </div>
+</div>

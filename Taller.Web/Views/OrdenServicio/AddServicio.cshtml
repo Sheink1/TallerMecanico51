@@ -1,0 +1,74 @@
+@model Taller.Core.Models.Entidades.OrdenServicioDetalleTemporal
+
+ @{
+      TempData["Mecanico"]=ViewBag.IdMecanico;
+      TempData["Cliente"]=ViewBag.IdCliente;
+  }
+
+<h3>Agregar Servicio a la Orden</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="OrdenServicio" asp-action="AddServicio">
+              <input type="text" asp-for="IdOrdenServicioDetalle" class="form-control" type="hidden">
+              
+
+               <div class="from-group">
+                     <label asp-for="IdServicio" class="control-label"></label>
+                     <select asp-for="IdServicio" class="form-control" asp-items="ViewBag.ListaServicio" onchange="return selectedServicio(event);">
+                          <option>Seleccione una opcion ...</option>
+                     </select>
+                     <span asp-validation-for="IdServicio" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Cantidad" class="control-label"></label>
+                     <input  asp-for="Cantidad" class="form-control" onchange="return changeServicio(event);">
+                     <span asp-validation-for="Cantidad" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Costo" class="control-label"></label>
+                     <input  asp-for="Costo" class="form-control"onchange="return changeServicio(event);">
+                     <span asp-validation-for="Costo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Importe" class="control-label"></label>
+                     <input  asp-for="Importe" class="form-control" disabled>
+                     <span asp-validation-for="Importe" class="text-danger"></span>
+              </div>
+              <a asp-controller="IdOrdenServicio" asp-action="Create" class="btn btn-secondary">Regregas</a>
+             <input type="submit" value="Guardar" class="btn btn-primary">
+             
+          </form>
+      </div>
+</div>
+@section Scripts{
+
+      @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+         <script type="text/javascript">
+       
+       function changeServicio(e)
+         {
+                const cantidad= $(´#Cantidad´).val();
+                const costo= $(´#Costo´).val();
+                $("#Importe").val( cantidad* costo);
+         } 
+         function selectedServicio(e)
+         {
+                const idServicio=document.getElementById("IdServicio");
+                const costo = document.getElementById("Costo");
+                var id=idServicio.value;
+                $.ajax
+                     (
+                           {
+                              type:"Get",
+                              url:"/OrdenServicio/GetCostoServicio",
+                              data:{"id":id},
+                              success: function(response)
+                              {
+                                     costo.value=response;
+                              }
+                            }
+                    );
+         }
+         
+           </script>
+} 

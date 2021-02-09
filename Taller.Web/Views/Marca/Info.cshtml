@@ -1,0 +1,27 @@
+@model Taller.Core.Models.Entidades.Marca
+
+<h3>Informacion de la Marca @Model.Descripcion</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Info" asp-action="Marca">
+              
+               <input type="text" asp-for="IdMarca" class="form-control" disabled type="hidden">
+
+              <div class="from-group">
+                     <label asp-for="Descripcion" class="control-label"></label>
+                     <input type="text" asp-for="Descripcion" class="form-control" disabled>
+                     <span asp-validation-for="Descripcion" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control" disabled>
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Marca" asp-action="Index" class="btn btn-secondary">Regregas</a>
+              <a asp-controller="Marca" asp-action="Edit" asp-route-id="@Model.IdMarca" class="btn btn-warning">Modificar</a>
+              <a asp-controller="Marca" asp-action="Index" asp-route-id="@Model.IdMarca" class="btn btn-danger">Borrar</a>
+             
+             
+          </form>
+      </div>
+</div>

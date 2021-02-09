@@ -1,0 +1,34 @@
+@model Taller.Core.Models.Entidades.Servicio
+
+<h3>Modificar Servicio</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Servicio" asp-action="Edit">
+              
+               <input type="hidden" asp-for="IdServicio" class="form-control">
+              <div class="from-group">
+                     <label asp-for="Descripcion" class="control-label"></label>
+                     <input type="text" asp-for="Descripcion" class="form-control">
+                     <span asp-validation-for="Descripcion" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Grupo" class="control-label"></label>
+                     <input type="text" asp-for="Grupo" class="form-control">
+                     <span asp-validation-for="Grupo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Costo" class="control-label"></label>
+                     <input type="text" asp-for="Costo" class="form-control">
+                     <span asp-validation-for="Costo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control">
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Servicio" asp-action="Index" class="btn btn-secondary">Regregar</a>
+             <input type="submit" value="Guardar" class="btn btn-primary">
+             
+          </form>
+      </div>
+</div>

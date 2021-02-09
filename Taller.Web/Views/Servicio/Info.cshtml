@@ -1,0 +1,36 @@
+@model Taller.Core.Models.Entidades.Servicio
+
+<h3>Informacion de Servicio </h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Servicio" asp-action="Create">
+              <input type="text" asp-for="IdServicio" class="form-control" disabled type="hidden">
+
+              <div class="from-group">
+                     <label asp-for="Descripcion" class="control-label"></label>
+                     <input type="text" asp-for="Descripcion" class="form-control" disabled>
+                     <span asp-validation-for="Descripcion" class="text-danger"></span>
+              </div>
+               <div class="from-group">
+                     <label asp-for="Grupo" class="control-label"></label>
+                     <input type="text" asp-for="Grupo" class="form-control" disabled>
+                     <span asp-validation-for="Grupo" class="text-danger"></span>
+              </div>
+               <div class="from-group">
+                     <label asp-for="Costo" class="control-label"></label>
+                     <input type="text" asp-for="Costo" class="form-control" disabled>
+                     <span asp-validation-for="Costo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control" disabled>
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Servicio" asp-action="Index" class="btn btn-secondary">Regregas</a>
+              <a asp-controller="Servicio" asp-action="Edit" asp-route-id="@Model.IdServicio" class="btn btn-warning">Modificar</a>
+              <a asp-controller="Servicio" asp-action="Index" asp-route-id="@Model.IdServicio" class="btn btn-danger">Borrar</a>
+             
+             
+          </form>
+      </div>
+</div>

@@ -1,0 +1,93 @@
+@model Taller.Core.Models.Entidades.OrdenServicio
+<h1>Lista de Orden Servicio</h1>
+
+  @{
+      TempData["Mecanico"]=Model.IdMecanico;
+      TempData["Cliente"]=Model.IdCliente;
+  }
+
+<div class="my-4">
+   <a asp-controller="OrdenServicio" asp-action="AddServicio" class="btn btn-primary"><i class="icon-plus"></i> Agregar Servicio</a>
+
+</div>
+ <form asp-controller="OrdenServicio" asp-action="Create">
+<div class="row">
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th>Servicio</th>
+                  <th>Servicio</th>
+                  <th>Cantidad</th>
+                  <th>Costo</th>
+                  <th>Importe</th>
+                  <td></td>
+                </tr>
+            </thead>
+            <tbody>
+
+              
+                @foreach (var item in @Model.DetalleServicio)
+                {
+                   <tr>
+                <td>@Html.DisplayFor(Items => item.IdOrdenServicioDetalle)</td>
+                <td>@Html.DisplayFor(Items => item.Servicio.Descripcion)</td>
+                <td>@Html.DisplayFor(Items => item.Cantidad)</td>
+                <td>@Html.DisplayFor(Items => item.Costo)</td>
+                <td>@Html.DisplayFor(Items => item.importe)</td>
+                <a asp-controller="OrdenServicio" asp-action="Create" asp-route-id="@item.IdOrdenServicioDetalle"
+                  class="btn btn-warning">
+                 <i class="icon-edit"></i> <span class="d-none d-md-inline">Modificar</span> 
+               </a>
+                <a asp-controller="OrdenServicio" asp-action="Delete" asp-route-id="@item.IdOrdenServicio"
+                  class="btn btn-danger" onclick="return DeleteConfirm()">
+                 <i class="icon-trash"></i> <span class="d-none d-md-inline">Borrar</span> 
+               </a>
+            </tr> 
+                }
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@Model.DetalleServicio.Sum(x=> x.importe) </td>
+            </tr>
+        </tfoot>
+        </table>
+        
+
+    </div>
+<div class="col-4">
+    <div>
+       
+            <input type="text" asp-for="IdOrdenServicio" class="form-control" type="hidden">
+            <input type="text" asp-for="Fecha" class="form-control" type="hidden">
+            <input type="text" asp-for="Estatus" class="form-control" type="hidden">
+            <input type="text" asp-for="Autorizada" class="form-control" type="hidden">
+
+              <div class="from-group">
+                     <label asp-for="IdCliente" class="control-label"></label>
+                     <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.ListaCliente">
+                          <option>Seleccione una opcion ...</option>
+                     </select>
+                     <span asp-validation-for="IdCliente" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="IdMecanico" class="control-label"></label>
+                     <select asp-for="IdMecanico" class="form-control" asp-items="ViewBag.ListaMecanico">
+                          <option>Seleccione una opcion ...</option>
+                     </select>
+                     <span asp-validation-for="IdMecanico" class="text-danger"></span>
+              </div>
+              <a asp-controller="OrdenServicio" asp-action="Index" class="btn btn-secondary">Regregas</a>
+             <input type="submit" value="Guardar" class="btn btn-primary">
+        
+
+     </div>
+</div>
+</form>
+
+
+</div>

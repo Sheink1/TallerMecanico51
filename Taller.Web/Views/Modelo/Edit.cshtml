@@ -1,0 +1,32 @@
+@model Taller.Core.Models.Entidades.Modelo
+
+<h3>Modificar Modelo</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Modelo" asp-action="Edit">
+              
+               <input type="hidden" asp-for="IdModelo" class="form-control">
+
+              <div class="from-group">
+                     <label asp-for="Descripcion" class="control-label"></label>
+                     <input type="text" asp-for="Descripcion" class="form-control">
+                     <span asp-validation-for="Descripcion" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="IdMarca" class="control-label"></label>
+                     <select asp-for="IdMarca" class="form-control" asp-items="ViewBag.ListaMarcas">
+                          <option>Seleccione una opcion ...</option>
+                     </select>
+                     <span asp-validation-for="IdMarca" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control">
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Modelo" asp-action="Index" class="btn btn-secondary">Regregas</a>
+             <input type="submit" value="Guardar" class="btn btn-primary">
+             
+          </form>
+      </div>
+</div>

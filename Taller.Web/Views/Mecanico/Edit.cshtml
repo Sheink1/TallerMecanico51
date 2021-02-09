@@ -1,0 +1,36 @@
+@model Taller.Core.Models.Entidades.Mecanico
+
+<h3>Modificar Mecanico</h3>
+<div class="row"> 
+      <div  class="col-12 col-lg-6">
+            <form asp-controller="Mecanico" asp-action="Edit">
+              
+               <input type="hidden" asp-for="IdMecanico" class="form-control">
+              <div class="from-group">
+                     <label asp-for="Nombre" class="control-label"></label>
+                     <input type="text" asp-for="Nombre" class="form-control">
+                     <span asp-validation-for="Nombre" class="text-danger"></span>
+              </div>
+
+              <div class="from-group">
+                     <label asp-for="Telefono" class="control-label"></label>
+                     <input type="text" asp-for="Telefono" class="form-control">
+                     <span asp-validation-for="Telefono" class="text-danger"></span>
+              </div>
+
+              <div class="from-group">
+                     <label asp-for="Correo" class="control-label"></label>
+                     <input type="text" asp-for="Correo" class="form-control">
+                     <span asp-validation-for="Correo" class="text-danger"></span>
+              </div>
+              <div class="from-group">
+                     <label asp-for="Activo" class="control-label"></label>
+                     <input  asp-for="Activo" class="form-control">
+                     <span asp-validation-for="Activo" class="text-danger"></span>
+              </div>
+              <a asp-controller="Mecanico" asp-action="Index" class="btn btn-secondary">Regregar</a>
+             <input type="submit" value="Guardar" class="btn btn-primary">
+             
+          </form>
+      </div>
+</div>
